@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Runtime.Remoting;
@@ -28,6 +30,7 @@ namespace IC_MVP_Project_Task1.Controllers
             {
                 dataSourceList.Add(new Customer
                 {
+                    ID = db.Customers.ToList()[i].ID,
                     Name = db.Customers.ToList()[i].Name,
                     Address = db.Customers.ToList()[i].Address
                 });
@@ -63,24 +66,16 @@ namespace IC_MVP_Project_Task1.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Address")] Customer customer)
+        public JsonResult CreateCustomer(string name, string address)
         {
-            try
+            Customer customer = new Customer
             {
-                if (ModelState.IsValid)
-                {
-                    db.Customers.Add(customer);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (DataException dex)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-
-            return View(customer);
+                Name = name,
+                Address = address
+            };
+            db.Customers.Add(customer);
+            db.SaveChanges();
+            return Json(customer);
         }
 
         // GET: Customer/Edit/5
@@ -101,31 +96,27 @@ namespace IC_MVP_Project_Task1.Controllers
         // POST: Customer/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public int EditCustomer(int ID, string Name, string Address)
         {
-            if (id == null)
+            var name = new SqlParameter("@Name", System.Data.SqlDbType.VarChar, 20)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var customerToUpdate = db.Customers.Find(id);
-            if (TryUpdateModel(customerToUpdate, "",
-               new string[] { "Name", "Address" }))
-            {
-                try
-                {
-                    db.SaveChanges();
+                Value = Name
+            };
 
-                    return RedirectToAction("Index");
-                }
-                catch (DataException dex)
-                {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
-            }
-            return View(customerToUpdate);
+            var address = new SqlParameter("@Address", System.Data.SqlDbType.VarChar, 20)
+            {
+                Value = Address
+            };
+
+            var id = new SqlParameter("@id", System.Data.SqlDbType.Int)
+            {
+                Value = ID
+            };
+            var sql = @"Update [Customer] SET Name = @name, Address = @address WHERE ID = @id";
+            db.Database.ExecuteSqlCommand(sql, name, address, id);
+            return 200;
         }
 
         // GET: Customer/Delete/5

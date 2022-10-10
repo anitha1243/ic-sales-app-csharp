@@ -103,12 +103,13 @@
 
         if (serviceList != "") {
             tableData = serviceList.map(service =>
-                <tr key={service.id}>
-                    <td className="two wide">{service.Name}</td>
-                    <td className="ten wide">{service.Address}</td>
-                    <td className="four wide">
+                <tr key={service.ID}>
+                    <td className="two wide" key={service.ID}>{service.Name}</td>
+                    <td className="ten wide" key={service.ID}>{service.Address}</td>
+                    <td className="four wide" key={service.ID}>
                         <i className="outline write icon" onClick={this.update.bind(this, service.id)}></i>
                         <i className="remove icon" onClick={this.delete.bind(this, service.id)}></i>
+                        <EditModalButton custId={service.ID}/>
                     </td>
                 </tr>
             )

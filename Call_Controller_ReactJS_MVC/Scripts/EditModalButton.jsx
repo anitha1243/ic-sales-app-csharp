@@ -1,5 +1,5 @@
-﻿const { Button, Header, Image, Modal, Label, Input } = semanticUIReact
-function ModalButton() {
+﻿//const { Header, Image, Modal, Label, Input } = semanticUIReact
+function EditModalButton(props) {
     const [open, setOpen] = React.useState(false);
     const [name, setName] = React.useState("");
     const [address, setAddress] = React.useState("");
@@ -17,15 +17,14 @@ function ModalButton() {
         }
         if (request != null) {
 
-            request.open("POST", "/Customer/CreateCustomer", false);
-            var params = "{name: '" + name + "', address: '" + address + "'}";
+            request.open("POST", "/Customer/EditCustomer", false);
+            var params = "{ID: " + props.custId + ", Name: '" + name + "', Address: '" + address + "'}";
             console.log(params);
             request.setRequestHeader("Content-Type", "application/json");
             request.onload = function () {
                 if (request.readyState == 4 && request.status == 200) {
                     var response = JSON.parse(request.responseText);
                     console.log(response);
-                    //alert("Hello: " + response.Name);
                 }
             }.bind(this);
             request.send(params);
@@ -37,9 +36,9 @@ function ModalButton() {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button>New Customer</Button>}
+            trigger={<Button>Edit Customer</Button>}
         >
-            <Modal.Header>Create Customer</Modal.Header>
+            <Modal.Header>Edit Customer</Modal.Header>
             <Modal.Content image>
                 
                 <Modal.Description>
@@ -59,7 +58,7 @@ function ModalButton() {
                     Cancel
                 </Button>
                 <Button
-                    content="Create"
+                    content="Edit"
                     labelPosition='right'
                     icon='checkmark'
                     onClick={saveRecord}
@@ -70,4 +69,4 @@ function ModalButton() {
     )
 }
 
-//export default ModalButton
+//export default EditModalButton
