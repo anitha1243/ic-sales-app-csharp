@@ -139,21 +139,13 @@ namespace IC_MVP_Project_Task1.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        //[ValidateAntiForgeryToken]
+        public JsonResult DeleteCustomer(int id)
         {
-            try
-            {
-                Customer customer = db.Customers.Find(id);
-                db.Customers.Remove(customer);
-                db.SaveChanges();
-            }
-            catch (DataException dex)
-            {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
-            }
-            return RedirectToAction("Index");
+            Customer customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
+            db.SaveChanges();
+            return Json(customer);
         }
 
         protected override void Dispose(bool disposing)

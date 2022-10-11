@@ -111,6 +111,9 @@
                         <i className="remove icon" onClick={this.delete.bind(this, service.id)}></i>
                         <EditModalButton custId={service.ID}/>
                     </td>
+                    <td className="four wide" key={service.ID}>
+                        <DeleteModalButton custId={service.ID} />
+                    </td>
                 </tr>
             )
         }
