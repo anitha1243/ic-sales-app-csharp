@@ -55,3 +55,5 @@ C:\Users\ANITA\Downloads\Call_Controller_ReactJS_MVC\Call_Controller_ReactJS_MVC
 C:\Users\ANITA\Downloads\Call_Controller_ReactJS_MVC\Call_Controller_ReactJS_MVC\obj\Release\IC_MVP_Project_Task1.csproj.CopyComplete
 C:\Users\ANITA\Downloads\Call_Controller_ReactJS_MVC\Call_Controller_ReactJS_MVC\obj\Release\Call_Controller_ReactJS_MVC.dll
 C:\Users\ANITA\Downloads\Call_Controller_ReactJS_MVC\Call_Controller_ReactJS_MVC\obj\Release\Call_Controller_ReactJS_MVC.pdb
+C:\Users\ANITA\Downloads\Call_Controller_ReactJS_MVC\Call_Controller_ReactJS_MVC\obj\Release\Call_Controller_ReactJS_MVC.Migrations.InitialCreate.resources
+C:\Users\ANITA\Downloads\Call_Controller_ReactJS_MVC\Call_Controller_ReactJS_MVC\obj\Release\IC_MVP_Project_Task1.csproj.GenerateResource.cache

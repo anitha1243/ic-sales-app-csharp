@@ -179,8 +179,12 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\ic-sales-app - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ic-sales-app - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ic-sales-app-task-1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ic-sales-app-task-1 - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\ic-sales-app-task-1 - FTP2.pubxml" />
+    <None Include="Properties\PublishProfiles\ic-sales-app-task-1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ic-sales-app-task-1 - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\ic-sales-app-task-1 - Web Deploy2.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
