@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="SalesContext-Web.config Connection String" description="SalesContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=Sales;Integrated Security=SSPI;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\ANITA\\Downloads\\Call_Controller_ReactJS_MVC\\Call_Controller_ReactJS_MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SalesContext']/@connectionString" />
+  </parameter>
+</parameters>

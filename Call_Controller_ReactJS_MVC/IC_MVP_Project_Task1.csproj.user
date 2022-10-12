@@ -16,6 +16,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <NameOfLastUsedPublishProfile>C:\Users\ANITA\Downloads\Call_Controller_ReactJS_MVC\Call_Controller_ReactJS_MVC\Properties\PublishProfiles\ic-sales-app - FTP.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
